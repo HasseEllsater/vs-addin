@@ -45,10 +45,9 @@ namespace XppDevs.AddinsDemo
         }
 
         /// <summary>
-        /// Add a new method (with a hard-coded name and empty body) to the selected class.
-        /// It add the 
+        /// Adds a new method (with a hard-coded name and empty body) to the selected class.
         /// </summary>
-        /// <param name="c"></param>
+        /// <param name="c">The class to which the method will be added.</param>
         /// <remarks>
         /// The method is added to the underlying file, but not to the designer.
         /// Visual Studio will detect the change and asks the user if the file should be reloaded.
