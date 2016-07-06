@@ -70,6 +70,24 @@ namespace XppDevs.AddinsDemo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demo - Add method.
+        /// </summary>
+        internal static string AddMethodAddInCaption {
+            get {
+                return ResourceManager.GetString("AddMethodAddInCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demo - Execute command (table browser).
+        /// </summary>
+        internal static string ExecuteCommandAddInCaption {
+            get {
+                return ResourceManager.GetString("ExecuteCommandAddInCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Demo - Multi selection.
         /// </summary>
         internal static string MultiSelectionAddInCaption {

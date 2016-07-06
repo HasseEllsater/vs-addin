@@ -120,6 +120,12 @@
   <data name="AddClassAddInCaption" xml:space="preserve">
     <value>Demo - Add class</value>
   </data>
+  <data name="AddMethodAddInCaption" xml:space="preserve">
+    <value>Demo - Add method</value>
+  </data>
+  <data name="ExecuteCommandAddInCaption" xml:space="preserve">
+    <value>Demo - Execute command (table browser)</value>
+  </data>
   <data name="MultiSelectionAddInCaption" xml:space="preserve">
     <value>Demo - Multi selection</value>
   </data>

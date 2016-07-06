@@ -11,20 +11,19 @@ using Microsoft.Dynamics.Framework.Tools.MetaModel.Core;
 namespace XppDevs.AddinsDemo
 {
     /// <summary>
-    /// Demonstrates how to get information about one or more elements selected in class designer.
+    /// Demonstrates how to get information about a single element selected in class designer.
     /// </summary>
-
+    
     // This add-in is available from context menu in designer.
     [Export(typeof(IDesignerMenu))]
     // This add-in will work on classes (IClassItem) and class methods (IMethod).
-    // Notice the "CanSelectMultiple" parameter of the second attribute.
     [DesignerMenuExportMetadata(AutomationNodeType = typeof(IClassItem))]
-    [DesignerMenuExportMetadata(AutomationNodeType = typeof(IMethod), CanSelectMultiple = true)]
-    public class MultiSelectionContextAddIn : DesignerMenuBase
+    [DesignerMenuExportMetadata(AutomationNodeType = typeof(IMethod))]
+    public class SingleSelectionDesignerAddIn : DesignerMenuBase
     {
-        private const string addinName = "MultiSelectionDemoAXAddIn";
+        private const string addinName = "SingleSelectionDemoAXAddIn";
         // Caption is shown to users in the Addins menu.
-        public override string Caption => AddinResources.MultiSelectionAddInCaption;
+        public override string Caption => AddinResources.SingleSelectionAddInCaption;
         public override string Name => addinName;
 
         /// <summary>
@@ -37,24 +36,22 @@ namespace XppDevs.AddinsDemo
             {
                 StringBuilder messages = new StringBuilder();
 
-                // SelectedElements is a collection of objects; you can iterate it as such
-                foreach (object o in e.SelectedElements)
+                // Get the selected element as a base type "NamedElement". Maybe you don't need to know the specific
+                // type, because you just want to dump element names, for example. You still can check the type later
+                // and run any type-specific logic.
+                NamedElement namedElement = e.SelectedElement as NamedElement;
+                if (namedElement != null)
                 {
-                    // Here you would do something
+                    messages.AppendLine($"You selected {namedElement.GetType().Name} named {namedElement.Name}.");
                 }
 
-                // It's better to use a more specific type, such as NamedElement.
-                // This add-in accepts both classes and methods and this block
-                // will handle both.
-                foreach (NamedElement el in e.SelectedElements.OfType<NamedElement>())
+                // If you're looking for a specific type, try to cast the selected item directly to the type.
+                ClassItem c = e.SelectedElement as ClassItem;
+                if (c != null)
                 {
-                    messages.AppendLine($"You selected {el.GetType().Name} named {el.Name}.");
+                    int methodCount = c.Methods.Cast<IMethod>().Count(); // Calculating number of methods
+                    messages.AppendLine($"The class has {methodCount} method(s).");
                 }
-
-                // You can also select only elements of a specific type - class methods in this case.
-                var onlyMethods = e.SelectedElements.OfType<IMethod>();
-
-                messages.AppendLine($"You selected {onlyMethods.Count()} method(s).");
 
                 // Show messages in a dialog box.
                 CoreUtility.DisplayInfo(messages.ToString());

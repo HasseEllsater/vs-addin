@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +37,9 @@
     </Reference>
     <Reference Include="Microsoft.Dynamics.AX.Metadata">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\0ueyjx1c.4xo\Microsoft.Dynamics.AX.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Metadata.Extensions">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\0ueyjx1c.4xo\Microsoft.Dynamics.AX.Metadata.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dynamics.Framework.Tools.AddIns.Common">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\0ueyjx1c.4xo\AddinExtensions\Microsoft.Dynamics.Framework.Tools.AddIns.Common.dll</HintPath>
@@ -58,9 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddClassMenuAddIn.cs" />
+    <Compile Include="AddMethodDesignerAddIn.cs" />
+    <Compile Include="ExecuteCommandDesignerAdding.cs" />
     <Compile Include="LocalUtils.cs" />
-    <Compile Include="MultiSelectionContextAddIn.cs" />
-    <Compile Include="SingleSelectionContextAddIn.cs" />
+    <Compile Include="MultiSelectionDesignerAddIn.cs" />
+    <Compile Include="SingleSelectionDesignerAddIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddinResources.Designer.cs">
       <AutoGen>True</AutoGen>
